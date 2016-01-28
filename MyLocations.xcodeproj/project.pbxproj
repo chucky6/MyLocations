@@ -13,6 +13,7 @@
 		23B64F0C1C59532C00D2B73B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B64F0B1C59532C00D2B73B /* Assets.xcassets */; };
 		23B64F0F1C59532C00D2B73B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B64F0D1C59532C00D2B73B /* LaunchScreen.storyboard */; };
 		23B64F171C59561400D2B73B /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B64F161C59561400D2B73B /* CurrentLocationViewController.swift */; };
+		23B64F391C59A1D400D2B73B /* LocationsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B64F381C59A1D400D2B73B /* LocationsDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		23B64F0E1C59532C00D2B73B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23B64F101C59532C00D2B73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23B64F161C59561400D2B73B /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
+		23B64F381C59A1D400D2B73B /* LocationsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				23B64F021C59532C00D2B73B /* AppDelegate.swift */,
 				23B64F161C59561400D2B73B /* CurrentLocationViewController.swift */,
+				23B64F381C59A1D400D2B73B /* LocationsDetailTableViewController.swift */,
 				23B64F061C59532C00D2B73B /* SecondViewController.swift */,
 				23B64F081C59532C00D2B73B /* Main.storyboard */,
 				23B64F0B1C59532C00D2B73B /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23B64F071C59532C00D2B73B /* SecondViewController.swift in Sources */,
+				23B64F391C59A1D400D2B73B /* LocationsDetailTableViewController.swift in Sources */,
 				23B64F171C59561400D2B73B /* CurrentLocationViewController.swift in Sources */,
 				23B64F031C59532C00D2B73B /* AppDelegate.swift in Sources */,
 			);
