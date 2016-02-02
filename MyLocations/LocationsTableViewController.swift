@@ -24,12 +24,13 @@ class LocationsTableViewController: UITableViewController {
         let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: self.managedObjectContext)
         fetchRequest.entity = entity
         
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let sortDescriptor2 = NSSortDescriptor(key: "date", ascending: true)
+        let sortDescriptor1 = NSSortDescriptor(key: "category", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor1,    sortDescriptor2]
         
         fetchRequest.fetchBatchSize = 20
         
-        let fetchedRequestController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Locations")
+        let fetchedRequestController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "category", cacheName: "Locations")
         fetchedRequestController.delegate = self
         return fetchedRequestController
     }()
@@ -71,7 +72,12 @@ class LocationsTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return fetchedResultsController.sections!.count
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.name
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
