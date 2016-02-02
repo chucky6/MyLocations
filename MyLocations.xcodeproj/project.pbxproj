@@ -21,6 +21,8 @@
 		23B7B11D1C5E97CB00915660 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B7B11B1C5E97CB00915660 /* Location.swift */; };
 		23B7B11F1C5EB2D700915660 /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B7B11E1C5EB2D700915660 /* LocationsTableViewController.swift */; };
 		23B7B1221C60180100915660 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B7B1211C60180100915660 /* LocationCell.swift */; };
+		23B7B1241C60296C00915660 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B7B1231C60296C00915660 /* MapKit.framework */; };
+		23B7B1261C60298500915660 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B7B1251C60298500915660 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		23B7B11B1C5E97CB00915660 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../Location.swift; sourceTree = "<group>"; };
 		23B7B11E1C5EB2D700915660 /* LocationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewController.swift; sourceTree = "<group>"; };
 		23B7B1211C60180100915660 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		23B7B1231C60296C00915660 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		23B7B1251C60298500915660 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B7B1241C60296C00915660 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,7 @@
 		23B64EF61C59532C00D2B73B = {
 			isa = PBXGroup;
 			children = (
+				23B7B1231C60296C00915660 /* MapKit.framework */,
 				23B64F011C59532C00D2B73B /* MyLocations */,
 				23B64F001C59532C00D2B73B /* Products */,
 			);
@@ -78,6 +84,7 @@
 				23B7B1101C5E772700915660 /* CategoryPickerTableViewController.swift */,
 				23B7B11E1C5EB2D700915660 /* LocationsTableViewController.swift */,
 				23B7B1211C60180100915660 /* LocationCell.swift */,
+				23B7B1251C60298500915660 /* MapViewController.swift */,
 				23B7B1201C5EBA5700915660 /* View */,
 				23B7B1121C5E7EBB00915660 /* Utils */,
 				23B64F081C59532C00D2B73B /* Main.storyboard */,
@@ -186,6 +193,7 @@
 				23B7B1141C5E7ECF00915660 /* HudView.swift in Sources */,
 				23B7B1161C5E8D4A00915660 /* Functions.swift in Sources */,
 				23B7B1221C60180100915660 /* LocationCell.swift in Sources */,
+				23B7B1261C60298500915660 /* MapViewController.swift in Sources */,
 				23B7B11C1C5E97CB00915660 /* Location+CoreDataProperties.swift in Sources */,
 				23B64F171C59561400D2B73B /* CurrentLocationViewController.swift in Sources */,
 				23B7B1111C5E772700915660 /* CategoryPickerTableViewController.swift in Sources */,
