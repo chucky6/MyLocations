@@ -21,5 +21,8 @@ extension Location {
     @NSManaged var longitude: Double
     @NSManaged var locationDescription: String
     @NSManaged var placemark: CLPlacemark?
+    @NSManaged var photoID: NSNumber?
+    
+
 
 }
