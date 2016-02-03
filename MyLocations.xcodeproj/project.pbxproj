@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23A1F8EA1C6180B700CC9894 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A1F8E91C6180B700CC9894 /* UIImage+Resize.swift */; };
 		23B64F031C59532C00D2B73B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B64F021C59532C00D2B73B /* AppDelegate.swift */; };
 		23B64F0A1C59532C00D2B73B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B64F081C59532C00D2B73B /* Main.storyboard */; };
 		23B64F0C1C59532C00D2B73B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B64F0B1C59532C00D2B73B /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23A1F8E91C6180B700CC9894 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		23B64EFF1C59532C00D2B73B /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B64F021C59532C00D2B73B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B64F091C59532C00D2B73B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				23B7B1171C5E905D00915660 /* DataModel.xcdatamodeld */,
 				23B7B11A1C5E97CB00915660 /* Location+CoreDataProperties.swift */,
 				23B7B11B1C5E97CB00915660 /* Location.swift */,
+				23A1F8E91C6180B700CC9894 /* UIImage+Resize.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				23B7B11D1C5E97CB00915660 /* Location.swift in Sources */,
 				23B64F391C59A1D400D2B73B /* LocationsDetailTableViewController.swift in Sources */,
 				23B7B1141C5E7ECF00915660 /* HudView.swift in Sources */,
+				23A1F8EA1C6180B700CC9894 /* UIImage+Resize.swift in Sources */,
 				23B7B1161C5E8D4A00915660 /* Functions.swift in Sources */,
 				23B7B1221C60180100915660 /* LocationCell.swift in Sources */,
 				23B7B1261C60298500915660 /* MapViewController.swift in Sources */,
