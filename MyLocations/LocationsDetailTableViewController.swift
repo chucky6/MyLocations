@@ -88,6 +88,8 @@ class LocationsDetailTableViewController: UITableViewController {
         
         listenForBackgroundNotification()
         
+        
+        
     }
     
     func showImage(image:UIImage) {
@@ -121,28 +123,15 @@ class LocationsDetailTableViewController: UITableViewController {
     
     func stringFromPlacemark(placemark: CLPlacemark) -> String {
         
-        var text = ""
-        
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
-        if let s = placemark.thoroughfare {
-            text += s + ", "
-        }
-        if let s = placemark.locality {
-            text += s + ", "
-        }
-        if let s = placemark.administrativeArea {
-            text += s + " "
-        }
-        if let s = placemark.postalCode {
-            text += s + ", "
-        }
-        if let s = placemark.country {
-            text += s
-        }
-        
-        return text
+        var line1 = ""
+        line1.addText(placemark.subThoroughfare, withSeparator: "")
+        line1.addText(placemark.thoroughfare, withSeparator: " ")
+        var line2 = ""
+        line2.addText(placemark.locality, withSeparator: "")
+        line2.addText(placemark.administrativeArea, withSeparator: " ")
+        line2.addText(placemark.postalCode, withSeparator: " ")
+        line1.addText(line2, withSeparator: "\n")
+        return line1
     }
     
     func formatDate(date:NSDate) -> String {
@@ -249,12 +238,33 @@ class LocationsDetailTableViewController: UITableViewController {
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
+    override func tableView(tableView: UITableView,willDisplayCell cell: UITableViewCell,forRowAtIndexPath indexPath: NSIndexPath) {
+            cell.backgroundColor = UIColor.blackColor()
+            if let textLabel = cell.textLabel {
+                textLabel.textColor = UIColor.whiteColor()
+                textLabel.highlightedTextColor = textLabel.textColor
+            }
+            if let detailLabel = cell.detailTextLabel {
+                detailLabel.textColor = UIColor(white: 1.0, alpha: 0.4)
+                detailLabel.highlightedTextColor = detailLabel.textColor
+            }
+            if indexPath.row == 2 {
+                let addressLabel = cell.viewWithTag(100) as! UILabel
+                addressLabel.textColor = UIColor.whiteColor()
+                addressLabel.highlightedTextColor = addressLabel.textColor
+            }
+            let selectionView = UIView(frame: CGRect.zero)
+            selectionView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+            cell.selectedBackgroundView = selectionView
+    }
 
 }
 
 extension LocationsDetailTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func takePhotoWithCamera() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
+        imagePicker.view.tintColor = view.tintColor
         imagePicker.sourceType = .Camera
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -262,7 +272,8 @@ extension LocationsDetailTableViewController: UIImagePickerControllerDelegate, U
     }
     
     func choosePhotoFromLibrary() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
+        imagePicker.view.tintColor = view.tintColor
         imagePicker.sourceType = .PhotoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
