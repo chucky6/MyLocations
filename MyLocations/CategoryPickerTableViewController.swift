@@ -23,19 +23,19 @@ class CategoryPickerTableViewController: UITableViewController {
         "Icecream Vendor",
         "Landmark",
         "Park"]
-    var selectedIndexPath = NSIndexPath()
+    var selectedIndexPath = IndexPath()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         for i in 0..<categories.count {
             if categories[i] == selectedCategoryName {
-                selectedIndexPath = NSIndexPath(forRow: i, inSection: 0)
+                selectedIndexPath = IndexPath(row: i, section: 0)
                 break
             }
         }
-        tableView.backgroundColor = UIColor.blackColor()
+        tableView.backgroundColor = UIColor.black()
         tableView.separatorColor = UIColor(white: 1.0, alpha: 0.2)
-        tableView.indicatorStyle = .White
+        tableView.indicatorStyle = .white
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,53 +46,53 @@ class CategoryPickerTableViewController: UITableViewController {
     // MARK: - Table view data source
 
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return categories.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        let categoryName = categories[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let categoryName = categories[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = categoryName
         
         if categoryName == selectedCategoryName {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         } else {
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
 
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row != selectedIndexPath.row {
-            if let newCell = tableView.cellForRowAtIndexPath(indexPath) {
-                newCell.accessoryType = .Checkmark
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).row != selectedIndexPath.row {
+            if let newCell = tableView.cellForRow(at: indexPath) {
+                newCell.accessoryType = .checkmark
             }
-            if let oldCell = tableView.cellForRowAtIndexPath(selectedIndexPath) {
-                oldCell.accessoryType = .None
+            if let oldCell = tableView.cellForRow(at: selectedIndexPath) {
+                oldCell.accessoryType = .none
             }
             selectedIndexPath = indexPath
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PickedCategory" {
             let cell = sender as! UITableViewCell
-            if let indexPath = tableView.indexPathForCell(cell) {
-                selectedCategoryName = categories[indexPath.row]
+            if let indexPath = tableView.indexPath(for: cell) {
+                selectedCategoryName = categories[(indexPath as NSIndexPath).row]
             }
         }
     }
     
-    override func tableView(tableView: UITableView,
-        willDisplayCell cell: UITableViewCell,
-        forRowAtIndexPath indexPath: NSIndexPath) {
-            cell.backgroundColor = UIColor.blackColor()
+    override func tableView(_ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath) {
+            cell.backgroundColor = UIColor.black()
             if let textLabel = cell.textLabel {
-                textLabel.textColor = UIColor.whiteColor()
+                textLabel.textColor = UIColor.white()
                 textLabel.highlightedTextColor = textLabel.textColor
             }
             let selectionView = UIView(frame: CGRect.zero)

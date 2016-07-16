@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext! {
         didSet {
-            NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: managedObjectContext, queue: NSOperationQueue.mainQueue()) { _ in
+            NotificationCenter.default().addObserver(forName: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext, queue: OperationQueue.main()) { _ in
                 if self.isViewLoaded() {
                     self.updateLocations()
                 }
@@ -37,15 +37,15 @@ class MapViewController: UIViewController {
 
     func updateLocations() {
         mapView.removeAnnotations(locations)
-        let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: managedObjectContext)
-        let fetchRequest = NSFetchRequest()
+        let entity = NSEntityDescription.entity(forEntityName: "Location", in: managedObjectContext)
+        let fetchRequest = NSFetchRequest<Location>()
         fetchRequest.entity = entity
         
-        locations = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Location]
+        locations = try! managedObjectContext.fetch(fetchRequest)
         mapView.addAnnotations(locations)
     }
     
-    func regionForAnnotations(annotations:[MKAnnotation]) -> MKCoordinateRegion {
+    func regionForAnnotations(_ annotations:[MKAnnotation]) -> MKCoordinateRegion {
         var region: MKCoordinateRegion
         
         switch annotations.count {
@@ -75,11 +75,11 @@ class MapViewController: UIViewController {
         return region
     }
     
-    func showLocationDetails(sender: UIButton) {
-        performSegueWithIdentifier("EditLocation", sender: sender)
+    func showLocationDetails(_ sender: UIButton) {
+        performSegue(withIdentifier: "EditLocation", sender: sender)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditLocation" {
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! LocationsDetailTableViewController
@@ -102,30 +102,30 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: MKMapViewDelegate {
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is Location else {
             return nil
         }
         
         let identifier = "Location"
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as! MKPinAnnotationView!
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as! MKPinAnnotationView!
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView.enabled = true
-            annotationView.canShowCallout = true
-            annotationView.animatesDrop = false
-            annotationView.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
-            annotationView.tintColor = UIColor(white: 0.0, alpha: 0.5)
+            annotationView?.isEnabled = true
+            annotationView?.canShowCallout = true
+            annotationView?.animatesDrop = false
+            annotationView?.pinTintColor = UIColor(red: 0.32, green: 0.82, blue: 0.4, alpha: 1)
+            annotationView?.tintColor = UIColor(white: 0.0, alpha: 0.5)
             
-            let rightButton = UIButton(type: .DetailDisclosure)
-            rightButton.addTarget(self, action: Selector("showLocationDetails:"), forControlEvents: .TouchUpInside)
-            annotationView.rightCalloutAccessoryView = rightButton
+            let rightButton = UIButton(type: .detailDisclosure)
+            rightButton.addTarget(self, action: #selector(MapViewController.showLocationDetails(_:)), for: .touchUpInside)
+            annotationView?.rightCalloutAccessoryView = rightButton
         } else {
-            annotationView.annotation = annotation
+            annotationView?.annotation = annotation
         }
         
-        let button = annotationView.rightCalloutAccessoryView as! UIButton
-        if let index = locations.indexOf(annotation as! Location) {
+        let button = annotationView?.rightCalloutAccessoryView as! UIButton
+        if let index = locations.index(of: annotation as! Location) {
             button.tag = index
         }
         
@@ -135,7 +135,7 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 extension MapViewController: UINavigationBarDelegate {
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }
