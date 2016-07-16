@@ -155,12 +155,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Antonio Alves";
 				TargetAttributes = {
 					23B64EFE1C59532C00D2B73B = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = Q64TRSP8S5;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -326,6 +327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonio.MyLocations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -341,6 +343,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonio.MyLocations;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

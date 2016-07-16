@@ -17,8 +17,8 @@ class LocationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        backgroundColor = UIColor.blackColor()
-        descriptionLabel.textColor = UIColor.whiteColor()
+        backgroundColor = UIColor.black()
+        descriptionLabel.textColor = UIColor.white()
         descriptionLabel.highlightedTextColor = descriptionLabel.textColor
         addressLabel.textColor = UIColor(white: 1.0, alpha: 0.4)
         addressLabel.highlightedTextColor = addressLabel.textColor
@@ -33,20 +33,20 @@ class LocationCell: UITableViewCell {
         
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func imageForLocation(location: Location) -> UIImage {
+    func imageForLocation(_ location: Location) -> UIImage {
         if location.hasPhoto, let image = location.photoImage {
             return image.resizedImageWithBounds(CGSize(width: 52, height: 52))
         }
         return UIImage(named: "No Photo")!
     }
     
-    func configureCell(location: Location) {
+    func configureCell(_ location: Location) {
         if location.locationDescription.isEmpty {
             descriptionLabel.text = "(No Description)"
         } else {
